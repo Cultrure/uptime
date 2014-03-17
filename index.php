@@ -1,6 +1,5 @@
 <?php
-
-/* 
+/*
  * Copyright (C) 2014 Timo Salola <timo@salola.fi>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,4 +16,42 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+$uptime = exec('cat /proc/uptime');
+$uptime = explode('.', $uptime);
 ?>
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Aukko.net</title>
+        <meta name="description" content="Aukko.net server">
+        <meta name="author" content="Timo Salola">
+    </head>
+
+    <body>
+        <div id="uptime"></div>
+        <script type="text/javascript">
+            var uptime = <?php echo $uptime[0] ?>;
+            window.onload = function(){ updateTime() };
+            
+            var timer = window.setInterval(function(){ updateTime() }, 1000);
+            
+            function updateTime() {
+                var string = "Uptime: ";
+                var sec, min, hour, day;
+                sec = uptime % 60;
+                min = parseInt(uptime / 60 % 60);
+                hour = parseInt(uptime / 3600 % 24);
+                day = parseInt(uptime / 86400);
+
+                string = string + day + "days, " + hour + "hours, " + min + 
+                        "mins, " + sec + "secs";
+
+                document.getElementById("uptime").innerHTML = string;
+                uptime++;
+            }
+        </script>
+    </body>
+</html>
