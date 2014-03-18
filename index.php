@@ -39,6 +39,11 @@ $hostname = exec('hostname -f');
                 color: #fbfbfb;
             }
             
+            a, a:visited
+            {
+                color: #fbfbfb;
+            }
+            
             #hostname
             {
                 text-align: center;
@@ -48,6 +53,14 @@ $hostname = exec('hostname -f');
             {
                 text-align: center;
             }
+            
+            #copy
+            {
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+            }
         </style>
     </head>
 
@@ -55,6 +68,7 @@ $hostname = exec('hostname -f');
         <div id="logo"></div>
         <div id="hostname">Hostname: <?php echo $hostname; ?></div>
         <div id="uptime"></div>
+        <div id="copy"><a target="_blank" href="https://github.com/Cultrure/Server-info-page">Server info page</a> &copy; <a target="_blank" href="https://github.com/Cultrure">Timo Salola</a></div>
         <script type="text/javascript">
             var uptime = <?php echo $uptime[0] ?>;
             window.onload = function(){ updateTime() };
