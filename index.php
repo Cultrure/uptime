@@ -18,6 +18,8 @@
 
 $uptime = exec('cat /proc/uptime');
 $uptime = explode('.', $uptime);
+
+$hostname = exec('hostname -f');
 ?>
 <!doctype html>
 
@@ -28,9 +30,30 @@ $uptime = explode('.', $uptime);
         <title>Aukko.net</title>
         <meta name="description" content="Aukko.net server">
         <meta name="author" content="Timo Salola">
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        
+        <style type="text/css">
+            body
+            {
+                background-color: #3b3b3b;
+                color: #fbfbfb;
+            }
+            
+            #hostname
+            {
+                text-align: center;
+            }
+            
+            #uptime
+            {
+                text-align: center;
+            }
+        </style>
     </head>
 
-    <body>
+    <body lang="en">
+        <div id="logo"></div>
+        <div id="hostname">Hostname: <?php echo $hostname; ?></div>
         <div id="uptime"></div>
         <script type="text/javascript">
             var uptime = <?php echo $uptime[0] ?>;
