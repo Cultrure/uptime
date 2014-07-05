@@ -47,11 +47,14 @@ $hostname = exec('hostname -f');
             #hostname
             {
                 text-align: center;
+                margin-bottom: 10px;
             }
             
             #uptime
             {
                 text-align: center;
+                margin-bottom: 10px;
+                
             }
             
             #copy
